@@ -13,6 +13,7 @@ Benvenuto su **Personal Memo**, il tuo spazio digitale privato per organizzare p
 
 Personal Memo è più di un semplice blocco note; è un'estensione digitale della tua mente, progettata per aiutarti a tracciare il tuo percorso, riflettere sulle tue esperienze e rimanere organizzato in un mondo caotico. Che tu stia annotando idee fugaci o registrando momenti significativi della vita, Personal Memo è qui per supportarti in ogni passo del tuo cammino.
 
+---
 
 # Personal Memo 🇺🇸
 
