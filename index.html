@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Memo</title>
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="icon" href="static/images/logo.png" alt="">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a class="content-logo" href="index.html">Personal Memo</a>
+        </div> 
+        <div class="register-login">
+            <a class="redirect-icon" href="#">
+                <img src="static/images/unknown-user.png" alt="User Icon">
+            </a>
+        </div>
+    </header>
+    <div class="carousel-wrapper">
+        <div class="carousel-container">
+            <div class="cards">
+                <div class="card active">
+                    <h2>Welcome to Personal Memo</h2>
+                    <p class="card-content"><br><br><span id="timezone-message"></span> user! Welcome to one of my projects: <b>"PERSONAL MEMO"</b>. If you need to know what this site can be useful for, you will find out in the next card!</p>
+                </div>
+                <div class="card">
+                    <h2>A little more...</h2>
+                    <p class="card-content"><b>Personal Memo</b> is a <u>secure and user-friendly digital space</u> for organizing your 
+                        <b><i>thoughts</i></b>, <b><i>memories</i></b>, and <b><i>plans</i></b>. It offers private journals, a memory vault for storing photos and milestones, 
+                        to-do lists, customizable templates, advanced search and tagging, multi-device syncing, and strong privacy features. 
+                        <br><br>Whether you're recording daily reflections or managing tasks, <b>Personal Memo</b> 
+                        helps you stay organized and connected with your personal journey.</p>
+                </div>
+                <div class="card">
+                    <h2>Contact Me</h2>
+                    <p class="card-content">If you need to contact me... <br><br><i>maybe you found some visual bug or you want <br>to know more information about this site</i><br><br> do not hesitate to contact me by clicking the button below me!</p>
+                </div>
+            </div>
+            <div class="indicators">
+                <span class="indicator active" data-index="0"></span>
+                <span class="indicator" data-index="1"></span>
+                <span class="indicator" data-index="2"></span>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const now = new Date();
+            const hours = now.getHours();
+            let message = '';
+
+            if (hours >= 6 && hours < 12) {
+                message = "Good morning";
+            } else if (hours >= 12 && hours < 19) {
+                message = "Good afternoon";
+            } else {
+                message = "Good night";
+            }
+
+            document.getElementById('timezone-message').textContent = message;
+        });
+
+        let currentIndex = 0;
+        const cards = document.querySelectorAll('.card');
+        const indicators = document.querySelectorAll('.indicator');
+
+        function updateCarousel(index) {
+            const offset = -index * 100;
+            document.querySelector('.cards').style.transform = `translateX(${offset}%)`;
+
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            indicators[index].classList.add('active');
+        }
+
+        function nextCard() {
+            currentIndex = (currentIndex + 1) % cards.length;
+            updateCarousel(currentIndex);
+        }
+
+        function selectCard(event) {
+            const index = parseInt(event.target.getAttribute('data-index'));
+            currentIndex = index;
+            updateCarousel(currentIndex);
+        }
+
+        setInterval(nextCard, 8000);
+        indicators.forEach(indicator => indicator.addEventListener('click', selectCard));
+    </script>
+</body>
+</html>
