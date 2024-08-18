@@ -99,6 +99,33 @@ header {
     color: #004D40;
 }
 
+.button a {
+    display: inline-block;
+    padding: 12px 25px; /* Spaziatura interna del bottone */
+    font-size: 16px; /* Dimensione del testo */
+    font-weight: bold; /* Spessore del testo */
+    font-family: 'Montserrat', sans-serif; /* Font del bottone */
+    color: #FFFFFF; /* Colore del testo */
+    background-color: #009688; /* Colore di sfondo */
+    border-radius: 5px; /* Angoli arrotondati */
+    text-align: center; /* Centra il testo */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Effetti di transizione */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Ombra del bottone */
+}
+
+.button a:hover {
+    background-color: #00796B; /* Cambia colore di sfondo al passaggio del mouse */
+    transform: translateY(-2px); /* Effetto di sollevamento al passaggio del mouse */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Ombra aumentata al passaggio del mouse */
+}
+
+.button a:active {
+    background-color: #004D40; /* Colore di sfondo quando il bottone viene cliccato */
+    transform: translateY(0); /* Riporta il bottone alla posizione originale */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Rimuove l'ombra aumentata */
+}
+
 /* Indicatori del carosello */
 .indicators {
     position: absolute;
@@ -138,6 +165,11 @@ header {
         width: 30px;
         height: 30px;
     }
+
+    .button a {
+        padding: 0.8em 1.6em; /* Riduci il padding su schermi più piccoli */
+        font-size: 0.9rem; /* Riduci leggermente la dimensione del testo */
+    }
 }
 
 @media (max-width: 480px) {
@@ -148,5 +180,10 @@ header {
 
     .logo a {
         font-size: 20px;
+    }
+
+    .button a {
+        padding: 0.6em 1.2em; /* Ancora meno padding per i dispositivi molto piccoli */
+        font-size: 0.8rem; /* Riduci ulteriormente la dimensione del testo */
     }
 }
