@@ -11,7 +11,8 @@
 <body>
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form>
+            <form action="{{ url_for('register') }}" method="POST">
+                <!-- Form di Registrazione -->
                 <h1>Create Account</h1>
                 <div class="social-icons">
                     <a href="#" class="icon"><i class="fa-brands fa-google"></i></a>
@@ -20,18 +21,16 @@
                     <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your email for registeration</span>
-                <input type="text"
-                placeholder="Name">
-                <input type="email"
-                placeholder="Email">
-                <input type="password"
-                placeholder="Password">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
                 <button>Sign Up</button>
             </form>
         </div>
 
         <div class="form-container sign-in">
-            <form>
+            <!-- Form di Login -->
+            <form action="{{ url_for('login') }}" method="POST">
                 <h1>Sign In</h1>
                 <div class="social-icons">
                     <a href="#" class="icon"><i class="fa-brands fa-google"></i></a>
@@ -45,26 +44,37 @@
                 <input type="password"
                 placeholder="Password">
                 <a href="#">Forget something?</a>
-                <button>Sign Up</button>
+                <button>Sign In</button>
             </form>
         </div>
 
-        <div class="toogle-container">
+        <div class="toggle-container">
             <div class="toggle">
-                <div class="toogle-panel toggle-left">
+                <div class="toggle-panel toggle-left">
                     <h1>Welcome Back!</h1>
                     <p>Enter your personal details to enter your personal space! :D</p>
                     <button class="hidden" id="login">Sign In</button>
                 </div>
-                <div class="toogle-panel toggle-right">
+                <div class="toggle-panel toggle-right">
                     <h1>Hello User!</h1>
                     <p>Register with your personal details to enter in your new personal space! :D</p>
                     <button class="hidden" id="register">Sign Up</button>
                 </div>
             </div>
-        </div>
+        </div>        
     </div>
     <script>
+        const container = document.getElementById('container');
+        const registerBtn = document.getElementById('register');
+        const loginBtn = document.getElementById('login');
+
+        registerBtn.addEventListener('click', () => {
+            container.classList.add("active");
+        });
+
+        loginBtn.addEventListener('click', () => {
+            container.classList.remove("active");
+        });
 
     </script>
 </body>
