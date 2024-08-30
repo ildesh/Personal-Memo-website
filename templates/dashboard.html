@@ -4,10 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
 </head>
 <body>
-    <h1>Welcome, {{ name }}!</h1>
-    <p>This is your personal dashboard.</p>
-    <a href="#">Logout</a>
+    <header>
+        <div class="logo">
+            <a class="content-logo" href="index.html">Personal Memo</a>
+        </div> 
+        <div class="account-icon">
+            <a class="redirect-icon" href="templates/register-login.html">
+                <img src="#" alt="User Icon">
+            </a>
+        </div>
+    </header>
+    <nav class="sidebar-navbar">
+        <ul>
+            <li>
+                <a href="dashboard.html">
+                    <img width="24" height="24" src="https://img.icons8.com/material/24/dashboard-layout.png" alt="dashboard-layout"/>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="memos.html">
+                    <img src="path-to-memo-icon.png" alt="Memo Icon">
+                    <span>Memo</span>
+                </a>
+            </li>
+            <li>
+                <a href="calendar.html">
+                    <img src="path-to-calendar-icon.png" alt="Calendar Icon">
+                    <span>Calendario</span>
+                </a>
+            </li>
+            <li>
+                <a href="projects.html">
+                    <img src="path-to-projects-icon.png" alt="Projects Icon">
+                    <span>Progetti</span>
+                </a>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <img src="path-to-settings-icon.png" alt="Settings Icon">
+                    <span>Impostazioni</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="welcome-container">
+        <h1>Welcome, {{ name }}!</h1>
+        <p class="welcome-message">This is your personal dashboard.<br><br> This section is used as a welcome to 
+            your personal area! <br>To enjoy the features of the latter, 
+            interact with the sidebar to get started!
+        </p>
+    </div>
 </body>
 </html>
