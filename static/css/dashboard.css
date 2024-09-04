@@ -16,8 +16,8 @@ header {
     color: #FFFFFF;
     font-family: 'Roboto', 'Helvetica Neue', sans-serif;
     z-index: 1000;
-    margin-left: 200px; /* Aggiungi un margine a sinistra per evitare la sovrapposizione con la sidebar */
-    width: calc(100% - 200px); /* Adatta la larghezza dell'header */
+    margin-left: 60px; /* Allineato alla larghezza iniziale della sidebar */
+    transition: margin-left 0.3s ease, width 0.3s ease; /* Transizione fluida per margin-left e width */
 }
 
 .welcome-container {
@@ -25,13 +25,14 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 220px; /* Lascia spazio per la navbar laterale */
+    margin-left: 80px; /* Allineato alla larghezza iniziale della sidebar */
     padding: 20px;
+    transition: margin-left 0.3s ease; /* Transizione fluida per margin-left */
 }
 
 .welcome-message {
     font-size: 22px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
 }
 
@@ -40,7 +41,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 200px;
+    width: 60px; /* Larghezza iniziale della sidebar */
     height: 100vh;
     background-color: #004D40;
     display: flex;
@@ -48,6 +49,8 @@ header {
     align-items: center;
     padding-top: 25px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s ease; /* Transizione fluida per la larghezza */
+    overflow: hidden; /* Nascondi il testo eccessivo */
 }
 
 .sidebar-navbar ul {
@@ -79,32 +82,46 @@ header {
 .sidebar-navbar ul li a img {
     width: 24px;
     height: 24px;
-    margin-right: 15px;
+    margin-right: 0; /* Elimina il margine iniziale */
+    transition: margin-right 0.3s ease; /* Transizione per il margine */
 }
 
 .sidebar-navbar ul li a span {
     flex-grow: 1;
+    opacity: 0; /* Nascondi inizialmente il testo */
+    white-space: nowrap; /* Evita la sovrapposizione del testo */
+    transition: opacity 0.3s ease, margin-left 0.3s ease; /* Transizione per l'opacità e il margine */
+    margin-left: -20px; /* Sposta inizialmente il testo a sinistra */
 }
 
-.sidebar-navbar ul li a:hover {
-    color: #EAF0F1;
+/* Sidebar espansa quando si passa con il mouse */
+.sidebar-navbar:hover {
+    width: 200px; /* Espandi la sidebar */
+}
+
+.sidebar-navbar:hover ~ header {
+    margin-left: 200px; /* Sposta l'header in sincronia con la sidebar */
+    width: calc(100% - 200px); /* Riduci la larghezza dell'header */
+}
+
+.sidebar-navbar:hover ~ .welcome-container {
+    margin-left: 220px; /* Sposta il contenuto in sincronia con la sidebar */
+}
+
+/* Mostra il testo e aumenta il margine tra l'icona e il testo */
+.sidebar-navbar:hover ul li a img {
+    margin-right: 15px;
+}
+
+.sidebar-navbar:hover ul li a span {
+    opacity: 1; /* Rendi il testo visibile */
+    margin-left: 0; /* Allinea il testo */
 }
 
 /* Effetto di transizione a spinta da sinistra verso destra */
-.sidebar-navbar ul li a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%; /* Inizia fuori dalla vista a sinistra */
-    width: 100%;
-    height: 100%;
+.sidebar-navbar ul li:hover {
     background-color: #00796B; /* Colore di sfondo dell'hover */
     transition: transform 0.3s ease; /* Transizione liscia */
-    z-index: 0; /* Posiziona lo pseudo-elemento dietro il testo */
-}
-
-.sidebar-navbar ul li a:hover::before {
-    transform: translateX(100%); /* Sposta l'effetto da sinistra a destra */
 }
 
 .sidebar-navbar ul li a:hover {
@@ -113,11 +130,6 @@ header {
 }
 
 /* Attiva lo stato attivo */
-.sidebar-navbar ul li a.active::before {
-    transform: translateX(100%); /* Mantiene l'effetto attivo */
-    background-color: #00796B;
-}
-
 .sidebar-navbar ul li a.active {
     color: #EAF0F1;
     z-index: 1;
