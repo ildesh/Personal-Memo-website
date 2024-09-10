@@ -4,10 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="stylesheet" href="/static/css/index.css">
 </head>
 <body>
-    <h1>Welcome, {{ name }}!</h1>
-    <p>This is your personal dashboard.</p>
-    <a href="{{ url_for('logout') }}">Logout</a>
+    <header>
+        <div class="logo">
+            <a class="content-logo" href="index.html">Personal Memo</a>
+        </div> 
+        <div class="register-login">
+            <a class="redirect-icon" href="{{ url_for('static', filename='css/register-login.css') }}">
+                <img src="/static/images/unknown-user.png" alt="User Icon">
+            </a>
+        </div>
+    </header>
+    <nav class="sidebar-navbar">
+        <ul>
+            <li>
+                <a href="dashboard.html">
+                    <img width="24" height="24" src="https://img.icons8.com/material/24/dashboard-layout.png" alt="dashboard-layout"/>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="memos.html">
+                    <img width="24" height="24" src="https://img.icons8.com/pastel-glyph/24/memo--v1.png" alt="memo--v1"/>
+                    <span>Memo</span>
+                </a>
+            </li>
+            <li>
+                <a href="calendar.html">
+                    <img width="24" height="24" src="https://img.icons8.com/ios/24/calendar--v1.png" alt="calendar--v1"/>
+                    <span>Calendar</span>
+                </a>
+            </li>
+            <li>
+                <a href="projects.html">
+                    <img width="24" height="24" src="https://img.icons8.com/ios/24/group-of-projects.png" alt="group-of-projects"/>
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <img width="24" height="24" src="https://img.icons8.com/ios/24/settings--v1.png" alt="settings--v1"/>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="welcome-container">
+        <h1>Welcome, {{ name }}!</h1>
+        <p class="welcome-message">This is your personal dashboard.<br><br> This section is used as a welcome to 
+                your personal area! <br>To enjoy the features of the latter, 
+                interact with the sidebar to get started!</p>
+    </div>
+    <script>
+        const sidebar = document.querySelector('.sidebar-navbar');
+        const body = document.body;
+
+        sidebar.addEventListener('mouseenter', () => {
+            body.classList.add('sidebar-expanded');
+        });
+
+        sidebar.addEventListener('mouseleave', () => {
+            body.classList.remove('sidebar-expanded');
+        });
+
+    </script>
 </body>
 </html>
