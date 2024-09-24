@@ -26,11 +26,11 @@ create_user_table()
 
 @app.route('/')
 def homepage():
-    return render_template('template/index.html')
+    return render_template('index.html')
 
 @app.route('/register-login')
 def register_login():
-    return render_template('template/register-login.html')
+    return render_template('register-login.html')
 
 @app.route('/register', methods=['POST'])
 def register():
